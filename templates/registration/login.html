@@ -1,0 +1,106 @@
+{% load static %}
+{% load cust_tag %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/">
+
+        <!-- App css -->
+        <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static '/css/icons.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static '/css/metismenu.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static '/css/style.css' %}" rel="stylesheet" type="text/css" />
+
+        <script src="{% static '/js/modernizr.min.js' %}"></script>
+
+    </head>
+
+
+    <body>
+        
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="wrapper-page">
+
+                            <div class="m-t-40 card-box">
+                                <div class="text-center">
+                                    <h2 class="m-t-0 m-b-30">
+                                        SKAdmin Login
+                                        <!-- <a href="index.html" class="text-success">
+                                            <span><img src="assets/images/" alt="" height="30"></span>
+                                        </a> -->
+                                    </h2>
+                                </div>
+                                <div class="account-content">
+                                    <form class="form-horizontal" method="POST">
+                                        {% csrf_token  %}
+                                        <div class="form-group m-b-20">
+                                            <div class="col-12">
+                                                <label for="id_username">User Name</label>
+                                                 {{ form.username|form_css:"class:form-control,placeholder:Enter your user name,autofocus:False" }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group m-b-20">
+                                            <div class="col-12">
+                                               <label for="id_password">Password</label>
+                                                {{ form.password|form_css:"class:form-control,placeholder:Enter your password" }}
+                                            </div>
+                                        </div>
+                                        
+                                        {% if form.errors.values %}
+                                            {% for value in form.errors.values %}
+                                                <div class="alert alert-danger alert-dismissible fade show" id="error-message" role="alert">
+                                                   {{ value|striptags }}
+                                                </div> 
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        <div class="form-group account-btn text-center m-t-10">
+                                            <div class="col-12">
+                                                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+                            </div>
+                            <!-- end card-box-->
+
+                        </div>
+                        <!-- end wrapper -->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- jQuery  -->
+        <script src="{% static '/js/jquery.min.js' %}"></script>
+        <script src="{% static '/js/popper.min.js' %}"></script>
+        <script src="{% static '/js/bootstrap.min.js' %}"></script>
+        <script src="{% static '/js/metisMenu.min.js' %}"></script>
+        <script src="{% static '/js/waves.js' %}"></script>
+        <script src="{% static '/js/jquery.slimscroll.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static '/js/jquery.core.js' %}"></script>
+        <script src="{% static '/js/jquery.app.js' %}"></script>
+
+        <!-- Message Timeout
+        <script src="{% static '/js/main.js' %}"></script> -->
+
+    </body>
+</html>
